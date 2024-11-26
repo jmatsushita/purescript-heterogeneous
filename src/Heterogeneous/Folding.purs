@@ -178,7 +178,7 @@ instance foldlVariantCons ::
   where
   foldlVariantRowList _ f x =
     foldlVariantRowList (Proxy :: Proxy rest) f x
-      # Variant.on label (foldingWithIndex f label x)
+      # Variant.on @sym (foldingWithIndex f label x)
     where
     label = Proxy :: Proxy sym
 
@@ -216,7 +216,7 @@ instance foldlVariantFCons ::
   where
   foldlVariantFRowList _ f x =
     foldlVariantFRowList (Proxy :: Proxy rest) f x
-      # VariantF.on label (foldingWithIndex f label x)
+      # VariantF.on @sym (foldingWithIndex f label x)
     where
     label = Proxy :: Proxy sym
 

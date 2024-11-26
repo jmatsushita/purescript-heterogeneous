@@ -152,7 +152,7 @@ instance mapVariantWithIndexCons ::
   where
   mapVariantWithIndex _ fn =
     mapVariantWithIndex (Proxy :: Proxy rest) fn
-      # Variant.on label (Variant.inj label <<< mappingWithIndex fn label)
+      # Variant.on @sym (Variant.inj @sym <<< mappingWithIndex fn label)
     where
     label = Proxy :: Proxy sym
 
@@ -192,7 +192,7 @@ instance mapVariantFWithIndexCons ::
   where
   mapVariantFWithIndex _ fn =
     mapVariantFWithIndex (Proxy :: Proxy rest) fn
-      # VariantF.on label (VariantF.inj label <<< mappingWithIndex fn label)
+      # VariantF.on @sym (VariantF.inj @sym <<< mappingWithIndex fn label)
     where
     label = Proxy :: Proxy sym
 

@@ -5,7 +5,6 @@ import Prelude
 import Data.Variant (Variant)
 import Data.Variant as Variant
 import Heterogeneous.Folding (class Folding, class HFoldl, hfoldl)
-import Type.Proxy (Proxy(..))
 
 data ShowCase = ShowCase
 
@@ -21,7 +20,7 @@ type TestLabels =
   )
 
 someFoo :: Variant TestLabels
-someFoo = Variant.inj (Proxy :: Proxy "foo") 42
+someFoo = Variant.inj @"foo" 42
 
 showVariantValue :: forall r.
   HFoldl ShowCase String (Variant r) String =>
